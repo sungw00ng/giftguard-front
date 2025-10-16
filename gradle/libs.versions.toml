@@ -1,0 +1,37 @@
+[versions]
+# Android 및 Kotlin 버전을 정의합니다.
+agp = "8.3.0"
+kotlin = "1.9.22"
+
+# Compose Compiler 버전을 정의합니다. Kotlin 1.9.22와 호환되는 최신 버전입니다.
+composeCompiler = "1.5.10"
+
+# 주요 라이브러리 버전을 정의합니다.
+coreKtx = "1.12.0"
+lifecycleRuntimeKtx = "2.7.0"
+activityCompose = "1.8.2"
+composeBom = "2023.08.00"
+navigationCompose = "2.7.7"
+
+
+[libraries]
+# AndroidX 라이브러리들
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+# Compose 라이브러리 (BOM으로 버전을 통합 관리)
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
+# 테스트 라이브러리는 제외했습니다. 필요하면 추가하세요.
+
+
+[plugins]
+# 표준 Android Application 플러그인 별칭
+android-application = { id = "com.android.application", version.ref = "agp" }
+# 표준 Kotlin Android 플러그인 별칭 (Compose 지원은 이 플러그인 안에 통합되어 있습니다.)
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
