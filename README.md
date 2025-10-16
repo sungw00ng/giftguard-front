@@ -18,3 +18,34 @@
 | └ `StoreMapScreen.kt`                | 매장 지도 보기 화면                             | Presentation          |
 | └ `GeofenceAlertScreen.kt`           | 위치 기반 알림 설정 화면                          | Presentation          |
 | **`Viewmodels/GiftconViewModel.kt`** | UI 상태 관리 + 비즈니스 로직 수행                   | Presentation          |
+
+
+## back 연결 통로
+| 구분     | 현재 개발된 파일                      | 백엔드 연동 시 역할                                     |
+| ------ | ------------------------------ | ----------------------------------------------- |
+| 핵심 통로  | data/GiftconRepository.kt      | 이 파일의 구현을 API 호출로 변경                        |
+| 데이터 모델 | entities/Giftcon.kt            | 백엔드 API의 JSON 응답 포맷과 일치하도록 정의               |
+| 상태 관리  | viewmodels/GiftconViewModel.kt | Repository를 통해 백엔드 API를 호출하고, 결과를 UI 상태로 변환 |
+
+```Kotlin
+// 가상의 로컬 데이터 CRUD
+suspend fun saveGiftcon(giftcon: Giftcon) { /* ... 로컬 DB에 저장 */ }
+// ...
+```
+
+```Kotlin
+// 백엔드 API 통신
+suspend fun saveGiftcon(giftcon: Giftcon) {
+    //Ktor Client 등을 사용하여 HTTP POST 요청
+    apiService.post("/giftcons", giftcon.toJson())
+}
+// ...
+```
+
+| 단계                 | 파일명                            | 역할 및 설명                                                 |
+| ------------------ | ------------------------------ | ------------------------------------------------------- |
+| 1. Ktor API 서비스 설정 | data/GiftconApiService.kt      | Ktor HTTP Client 설정 및 서버 엔드포인트에 대응하는 API 호출 함수 정의       |
+| 2. Repository 수정   | data/GiftconRepository.kt      | 기존 로컬 저장소 대신 Ktor API 호출로 데이터 처리 구현 변경                  |
+| 3. 의존성 주입 업데이트     | data/AppContainer.kt           | Ktor Client 인스턴스를 생성하여 GiftconRepository에 주입하도록 변경      |
+| 4. ViewModel 업데이트  | viewmodels/GiftconViewModel.kt | barcode, memo 필드 추가 및 Ktor API 호출 결과를 반영하도록 상태 관리 로직 수정 |
+| 5. 엔티티 직렬화 설정      | entities/Giftcon.kt            | Ktor 직렬화를 위해 `@Serializable` 어노테이션 추가                   |
