@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "120536258069",
+    "project_id": "push-c6190",
+    "storage_bucket": "push-c6190.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120536258069:android:2e446b93dcfae2c2e7201c",
+        "android_client_info": {
+          "package_name": "com.example.giftguard_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6184YLluBlItgVny7fteFQ0lvdpcGUBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

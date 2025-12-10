@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GiftGuard-login</string>
+    <string name="title_activity_ocr">OCR</string>
+    <!-- 📌 Google Cloud에서 발급받은 웹 애플리케이션 클라이언트 ID를 여기에 붙여넣으세요.
+         (형식: [숫자-문자열].apps.googleusercontent.com) -->
+    <string name="google_login_client_id">353237190607-u5q7g6tm0ji1s1rg94k8kn4dq3i3362m.apps.googleusercontent.com</string>
+</resources>

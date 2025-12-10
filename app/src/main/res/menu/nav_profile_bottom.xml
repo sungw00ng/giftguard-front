@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_profile"
+        android:title="사용자 정보"
+        android:icon="@drawable/ic_person" />
+    <item
+        android:id="@+id/nav_map"
+        android:title="지도"
+            android:icon="@drawable/ic_map" />
+    <item
+        android:id="@+id/nav_add"
+        android:title="직접 추가"
+        android:icon="@drawable/ic_add" />
+</menu>
